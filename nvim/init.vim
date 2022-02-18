@@ -1,3 +1,4 @@
+set clipboard+=unnamedplus
 set mouse=a
 set number
 set relativenumber
@@ -17,6 +18,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'neoclide/coc.nvim', {'branch':'release'}
 let g:coc_global_extensions = ['coc-tsserver',
 \'coc-python',
@@ -47,7 +52,8 @@ let mapleader = " "
 nnoremap <leader>pv :Vex<CR>
 nnoremap <leader>pf :Files<CR>
 inoremap jk <esc>:w<CR>
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-g> :GFiles<CR>
+nnoremap <C-p> :Telescope<CR>
 
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 0
@@ -67,7 +73,7 @@ tnoremap <Esc> <C-\><C-n>
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 " open terminal on ctrl+n
 function! OpenTerminal()
-split term://zsh
+split term://bash
 resize 10
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
